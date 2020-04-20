@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     Double operand = null;
     String lastOperation = "=";
     CalculatorFragment calculator;
+    boolean isResult=false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         resultField = (TextView) findViewById(R.id.resultField);
         numberField = (TextView) findViewById(R.id.numberField);
         operationField = (TextView) findViewById(R.id.operationField);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        calculator = new CalculatorFragment();
+        transaction.replace(R.id.container, calculator);
+        transaction.commit();
 
     }
 
